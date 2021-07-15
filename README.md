@@ -36,6 +36,12 @@ youtube-dl --all-subs --write-description --write-info-json --write-annotations 
 
 Use the [scdet] filter from ffmpeg.
 
+The scdet.sh script wraps the command below and outputs data in the flat format
+that can be converted to CSV with flat-to-csv.sh.
+
+Note: Some shots fade-cross instead of using hard cuts.
+How should those be handled?
+
 ```sh
 cd episodes/$EPISODE
 # Extract the first frame of each new scene
