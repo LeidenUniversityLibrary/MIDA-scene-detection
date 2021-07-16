@@ -1,0 +1,10 @@
+# Remove "frames.frame."
+s/frames.frame.//
+# Remove "tags."
+s/tags.//
+# Replace "=" with ","
+s/=/,/
+# Replace first "." with comma
+s/\./,/
+# Replace escaped double quotes with double double quote
+s/\\"/""/g
