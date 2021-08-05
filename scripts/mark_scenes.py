@@ -23,5 +23,5 @@ scene_starts = pivoted_data["lavfi_scd_time"].notna()
 print(pivoted_data.loc[scene_starts, :].reset_index().head())
 scenes = pivoted_data.copy().loc[scene_starts, :].reset_index()
 scenes.index.name = "scene"
-analysed_file = pivoted_file.replace(".csv", "-a.csv")
+analysed_file = pivoted_file.replace(".csv", "-scenes.csv")
 scenes.to_csv(analysed_file)
