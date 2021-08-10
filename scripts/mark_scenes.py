@@ -12,7 +12,32 @@ csv_dtypes = {
     "lavfi_scd_time": "float64",
     "lavfi_blackframe_pblack": "float64"
 }
-use_cols = ["frame","pkt_pts_time","lavfi_scd_mafd","lavfi_scd_score","lavfi_scd_time","lavfi_blackframe_pblack"]
+use_cols = ["frame","pkt_pts_time","lavfi_scd_mafd","lavfi_scd_score","lavfi_scd_time","lavfi_blackframe_pblack",
+    "lavfi_signalstats_HUEAVG",
+    "lavfi_signalstats_HUEMED",
+    "lavfi_signalstats_SATAVG",
+    "lavfi_signalstats_SATHIGH",
+    "lavfi_signalstats_SATLOW",
+    "lavfi_signalstats_SATMAX",
+    "lavfi_signalstats_SATMIN",
+    "lavfi_signalstats_UAVG",
+    "lavfi_signalstats_UDIF",
+    "lavfi_signalstats_UHIGH",
+    "lavfi_signalstats_ULOW",
+    "lavfi_signalstats_UMAX",
+    "lavfi_signalstats_UMIN",
+    "lavfi_signalstats_VAVG",
+    "lavfi_signalstats_VDIF",
+    "lavfi_signalstats_VHIGH",
+    "lavfi_signalstats_VLOW",
+    "lavfi_signalstats_VMAX",
+    "lavfi_signalstats_VMIN",
+    "lavfi_signalstats_YAVG",
+    "lavfi_signalstats_YDIF",
+    "lavfi_signalstats_YHIGH",
+    "lavfi_signalstats_YLOW",
+    "lavfi_signalstats_YMAX",
+    "lavfi_signalstats_YMIN"]
 frames_data = pd.read_csv(pivoted_file, dtype = csv_dtypes, index_col="frame", usecols=use_cols)
 
 # Make sure the first frame starts a scene by setting the `scd_time`
@@ -53,6 +78,12 @@ scenes = frames_by_scene.agg(
     high_mafd=frames_by_scene["lavfi_scd_mafd"].quantile(0.8).round(5),
     high95_mafd=frames_by_scene["lavfi_scd_mafd"].quantile(0.95).round(5),
     scd_score=frames_by_scene["lavfi_scd_score"].first())\
+    .join(frames_by_scene[["lavfi_signalstats_YAVG",
+    "lavfi_signalstats_YDIF",
+    "lavfi_signalstats_YHIGH",
+    "lavfi_signalstats_YLOW",
+    "lavfi_signalstats_YMAX",
+    "lavfi_signalstats_YMIN"]].mean().round(5))\
     .reset_index()
 scenes.index.name = "scene"
 print(scenes.head())
