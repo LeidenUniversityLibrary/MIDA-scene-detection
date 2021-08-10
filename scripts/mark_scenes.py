@@ -51,7 +51,8 @@ scenes = frames_by_scene.agg(
     low_mafd=frames_by_scene["lavfi_scd_mafd"].quantile(0.2).round(5),
     median_mafd=frames_by_scene["lavfi_scd_mafd"].quantile(0.5).round(5),
     high_mafd=frames_by_scene["lavfi_scd_mafd"].quantile(0.8).round(5),
-    high95_mafd=frames_by_scene["lavfi_scd_mafd"].quantile(0.95).round(5))\
+    high95_mafd=frames_by_scene["lavfi_scd_mafd"].quantile(0.95).round(5),
+    scd_score=frames_by_scene["lavfi_scd_score"].first())\
     .reset_index()
 scenes.index.name = "scene"
 print(scenes.head())
