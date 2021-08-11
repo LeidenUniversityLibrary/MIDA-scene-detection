@@ -24,9 +24,12 @@ scenes_data = pd.read_csv(scenes_filename, dtype=sc_dtypes, usecols=sc_cols)
 scenes_data.loc[:, "end_time"] = (scenes_data.lavfi_scd_time + scenes_data.duration)
 print(scenes_data.head())
 
-# def find_closest_timestamp(target: pd.Series, choices: pd.DataFrame):
-def find_closest_timestamp(target: pd.Series):
-    # print(target.start_s, target.end_s)
+
+def find_closest_timestamp(target: pd.Series) -> pd.Series:
+    """
+    Determine which scene has the closest start and end timestamps to the
+    target timestamps.
+    """
     return scenes_data.assign(start_diff= (scenes_data.lavfi_scd_time - target.start_s).abs(),
                          end_diff= (scenes_data.end_time - target.end_s).abs())\
              .assign(total_diff= lambda x: x.start_diff + x.end_diff)\
@@ -34,9 +37,8 @@ def find_closest_timestamp(target: pd.Series):
              .iloc[0]
                         
 
-# print(find_closest_timestamp(timestamps_data.iloc[0]))
 aligned_timestamps = timestamps_data.join(timestamps_data.apply(find_closest_timestamp, axis=1))
-# aligned_timestamps = timestamps_data.apply(find_closest_timestamp, axis=1, args=(scenes_data))
 print(aligned_timestamps)
+
 aligned_filename = timestamps_filename.replace(".csv", "-aligned.csv")
-aligned_timestamps.round(3).to_csv(aligned_filename)
+aligned_timestamps.round(3).to_csv(aligned_filename, index=False)
