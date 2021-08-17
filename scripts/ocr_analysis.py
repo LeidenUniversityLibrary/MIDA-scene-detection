@@ -29,4 +29,6 @@ pivoted_data2["nr_lines"] = pivoted_data2.loc[good_rows, "lavfi_ocr_text"].str.c
 pivoted_data3 = pivoted_data2.join(confidences_stats)
 print(pivoted_data3.loc[good_rows, :].head())
 analysed_file = pivoted_file.replace(".csv", "-a.csv")
+if len(sys.argv) > 2:
+    analysed_file = sys.argv[2]
 pivoted_data3.to_csv(analysed_file)

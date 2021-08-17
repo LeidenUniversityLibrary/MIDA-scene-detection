@@ -41,4 +41,6 @@ aligned_timestamps = timestamps_data.join(timestamps_data.apply(find_closest_tim
 print(aligned_timestamps)
 
 aligned_filename = timestamps_filename.replace(".csv", "-aligned.csv")
+if len(sys.argv) > 3:
+    aligned_filename = sys.argv[3]
 aligned_timestamps.round(3).to_csv(aligned_filename, index=False)

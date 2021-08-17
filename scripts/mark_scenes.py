@@ -90,4 +90,6 @@ print(scenes.head())
 
 # Save the scenes information to a new file based on the input file name
 analysed_file = pivoted_file.replace(".csv", "-scenes.csv")
+if len(sys.argv) > 2:
+    analysed_file = sys.argv[2]
 scenes.to_csv(analysed_file)

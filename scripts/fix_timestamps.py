@@ -23,4 +23,6 @@ end_s=convert_hms_to_seconds(timestamps_data.end))
 print(fixed_data)
 
 out_filename = timestamps_filename.replace(".csv", "-seconds.csv")
+if len(sys.argv) > 2:
+    out_filename = sys.argv[2]
 fixed_data.to_csv(out_filename)

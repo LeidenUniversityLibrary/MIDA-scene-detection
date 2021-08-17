@@ -23,6 +23,9 @@ def print_extract_scene(scene: pd.Series):
     result += "-i data/{} -copyts -frame_pts true data_out/scene-{}/frame-%d.jpg\n".format(video_file, scene["scene"])
     return result
 
-with open("extract.sh", "w") as f:
+out_filename = "extract.sh"
+if len(sys.argv) > 3:
+    out_filename = sys.argv[3]
+with open(out_filename, "w") as f:
     for idx, row in timestamps_data.iterrows():
         f.write(print_extract_scene(row))
