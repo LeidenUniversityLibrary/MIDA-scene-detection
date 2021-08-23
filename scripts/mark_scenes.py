@@ -1,3 +1,10 @@
+"""Add scene numbers to frames and aggregate frame data per scene.
+
+Usage::
+
+    $ python mark_scenes.py frames-wide.csv frames-with-scenes.csv scenes-analysed.csv
+
+"""
 import pandas as pd
 import sys
 
@@ -57,6 +64,8 @@ print(scene_numbers.head())
 frames_with_scenes = frames_data.assign(scene=scene_numbers)
 print(frames_with_scenes.head())
 enriched_file = pivoted_file.replace(".csv", "-with-scenes.csv")
+if len(sys.argv) > 2:
+    enriched_file = sys.argv[2]
 frames_with_scenes.to_csv(enriched_file)
 
 # Determine length of scenes
@@ -90,6 +99,6 @@ print(scenes.head())
 
 # Save the scenes information to a new file based on the input file name
 analysed_file = pivoted_file.replace(".csv", "-scenes.csv")
-if len(sys.argv) > 2:
-    analysed_file = sys.argv[2]
+if len(sys.argv) > 3:
+    analysed_file = sys.argv[3]
 scenes.to_csv(analysed_file)
