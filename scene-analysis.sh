@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 # Usage: SCRIPT INPUT_VIDEO RUN
 # The RUN is an identifier to help us keep apart multiple runs of the same script
 IN_FILE=$1
