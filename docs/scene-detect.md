@@ -1,4 +1,8 @@
-### Detect scene (i.e. shot) changes
+---
+title: Scene detection
+---
+
+# Detect scene (i.e. shot) changes
 
 Use the [scdet] filter from ffmpeg.
 
