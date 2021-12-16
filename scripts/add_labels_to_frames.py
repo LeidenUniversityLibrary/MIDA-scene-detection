@@ -38,8 +38,8 @@ def derive_filename(row):
 
 frames_data.loc[:, 'filename'] = frames_data.apply(derive_filename, axis=1)
 
-# Load scene data
-scene_data = pd.read_csv(scene_file, index_col="scene")
+# Load scene data, assume NA means 'symbols not visible'
+scene_data = pd.read_csv(scene_file, index_col="scene").fillna(0)
 print(scene_data.head())
 
 # Join the scene labels with the original frame list
