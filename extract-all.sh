@@ -24,7 +24,7 @@ mkdir -p ${FOLDER}/all_frames/tmp
 for START in $(seq 0 $iterations); do
     ST=$((${START} * 300))
     echo "Starting extraction at $ST seconds"
-    ffmpeg -hide_banner -loglevel level+quiet -ss ${ST}.0 -t 300.0 -i ${FOLDER}/${VIDEO} -vsync 0 -copyts -lavfi select='not(mod(n\,3))' -frame_pts true ${FOLDER}/all_frames/tmp/f-%06d.jpg
+    ffmpeg -hide_banner -loglevel level+quiet -ss ${ST}.0 -t 300.0 -i ${FOLDER}/${VIDEO} -vsync 0 -copyts -lavfi select='not(mod(n\,10))' -frame_pts true -qscale:v 1 -qmin 1 -qmax 1 ${FOLDER}/all_frames/tmp/f-%06d.jpg
     echo "Moving files"
     # Inspired by https://unix.stackexchange.com/a/97782/256251
     for FILE in `ls ${FOLDER}/all_frames/tmp`; do
@@ -46,6 +46,8 @@ done
 # ffmpeg -hide_banner -loglevel level+quiet -ss 300.0 -t 300.0 -i data/Blm3j806lkE.mp4 -vsync 0 -copyts -frame_pts true -r 1 all_frames/tmp/f-%06d.jpg
 # ffmpeg -hide_banner -loglevel level+quiet -ss 300.0 -t 300.0 -i data/Blm3j806lkE.mp4 -vsync 0 -copyts -frame_pts true -framerate 1 all_frames/tmp/f-%06d.jpg
 # ffmpeg -hide_banner -loglevel level+quiet -ss 300.0 -t 300.0 -i data/Blm3j806lkE.mp4 -vsync 0 -copyts -lavfi select='not(mod(n\,100))' -frame_pts true all_frames/tmp/f-%06d.jpg
+# ffmpeg -hide_banner -loglevel level+quiet -ss 300.0 -t 300.0 -i data/Blm3j806lkE.mp4 -vsync 0 -copyts -lavfi select=key -frame_pts true all_frames/tmp/f-%06d.jpg
+# ffmpeg -hide_banner -loglevel level+quiet -ss 300.0 -t 300.0 -i data/Blm3j806lkE.mp4 -vsync 0 -copyts -lavfi select=key -frame_pts true -qscale:v 1 -qmin 1 -qmax 1 all_frames/tmp/f-%06d.jpg
 
 
 
