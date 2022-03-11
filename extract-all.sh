@@ -6,8 +6,8 @@ FRAMES_CSV=$2
 FOLDER=$3
 LENGTH=$(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 ${FOLDER}/${VIDEO})
 
-number_of_frames=`wc -l ${FRAMES_CSV} | awk '{print $1}'`
-# echo ${number_of_frames}
+number_of_frames=$(ffprobe -v error -show_entries stream=nb_frames -select_streams v -of default=noprint_wrappers=1:nokey=1 ${FOLDER}/${VIDEO})
+echo "Total number of frames: ${number_of_frames}"
 folders=${number_of_frames%[0-9][0-9][0-9][0-9]}
 # echo ${folders}
 iterations=$((${LENGTH%.*} / 300))
