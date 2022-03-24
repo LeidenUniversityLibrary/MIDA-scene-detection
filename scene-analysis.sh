@@ -19,4 +19,4 @@ $(dirname $0)/scdet.sh ${IN_FILE} $2
 $(dirname $0)/flat-to-csv.sh ${OUT_FLAT_TXT}
 
 # Mark scenes with frames
-python3 $(dirname $0)/scripts/mark_scenes.py ${FRAMES_WIDE} ${FRAMES_WITH_SCENE} ${SCENES_ANALYSED}
+python3 $(dirname $0)/scripts/mark_scenes.py --output-frames ${FRAMES_WITH_SCENE} --output-scenes ${SCENES_ANALYSED} ${FRAMES_WIDE}
