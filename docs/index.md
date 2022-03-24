@@ -1,3 +1,7 @@
+---
+title: Preparing videos for computer vision
+---
+
 This repository has scripts that help you:
 
 - detect scene (i.e. shot) changes
