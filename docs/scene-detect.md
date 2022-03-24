@@ -29,3 +29,25 @@ ffprobe -report -f lavfi -i "movie=data/kf5USsE6Xq8.webm,blackframe=amount=99:th
 ```
 
 [scdet]: https://ffmpeg.org/ffmpeg-filters.html#scdet-1
+
+# Scene detection on ALICE
+
+The [MIDA video analysis] repository contains a SLURM job to run scene
+detection on all episodes and save the results to SURFdrive.
+These raw results are saved in zip files.
+
+[MIDA video analysis]: https://github.com/LeidenUniversityLibrary/MIDA-video-analysis
+
+To process these raw results into a table of scenes and a table of frames with
+scene numbers, change into the directory with the zip files and run:
+
+```sh
+for E in {2..54}; do
+F=$(ls ep${E}_*.zip)
+mkdir -p ${E}
+unzip ${F} "ep${E}_ffprobe-flat.txt" -d ${E}
+python ~/git/MIDA-scene-detection/scripts/pivot.py -m -o ${E}/frames.csv ${E}/*_ffprobe-flat.txt
+python ~/git/MIDA-scene-detection/scripts/mark_scenes.py --output-frames ${E}/frames-with-scenes.csv --output-scenes ${E}/scenes.csv ${E}/frames.csv
+rm ${E}/*.txt ${E}/frames.csv
+done
+```
