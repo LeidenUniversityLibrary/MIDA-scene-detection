@@ -1,0 +1,547 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.4">
+    
+    
+      
+        <title>Deprecated scripts and commands - MIDA Video Pre-analysis Tools</title>
+      
+    
+    
+<link rel="stylesheet" href="../assets/stylesheets/extra.css">
+
+      <link rel="stylesheet" href="../assets/stylesheets/main.db9e7362.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+    
+
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700%7CUbuntu&display=fallback">
+        <style>:root{--md-text-font-family:"Open Sans";--md-code-font-family:"Ubuntu"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="leidenuniv" data-md-color-primary="white" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#convert-ffmpeg-framestxt-to-csv-deprecated" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="MIDA Video Pre-analysis Tools" class="md-header__button md-logo" aria-label="MIDA Video Pre-analysis Tools" data-md-component="logo">
+      
+  <img src="../assets/images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MIDA Video Pre-analysis Tools
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Deprecated scripts and commands
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MIDA Video Pre-analysis Tools" class="md-nav__button md-logo" aria-label="MIDA Video Pre-analysis Tools" data-md-component="logo">
+      
+  <img src="../assets/images/favicon.png" alt="logo">
+
+    </a>
+    MIDA Video Pre-analysis Tools
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Pre-analysis steps
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Pre-analysis steps" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Pre-analysis steps
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scene-detect/" class="md-nav__link">
+        Scene detection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ocr/" class="md-nav__link">
+        Run OCR to extract (Arabic) subtitles from frames
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../annotation/" class="md-nav__link">
+        Annotating AV materials
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extract-frames/" class="md-nav__link">
+        Extract frames from videos
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Deprecated scripts and commands
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Deprecated scripts and commands
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#convert-ffmpeg-framestxt-to-csv-deprecated" class="md-nav__link">
+    Convert ffmpeg frames.txt to CSV (deprecated)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#select-rows-from-csv-deprecated" class="md-nav__link">
+    Select rows from CSV (deprecated)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#merge-manual-marks-with-scenes-deprecated" class="md-nav__link">
+    Merge manual marks with scenes (deprecated)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extract-scenes-deprecated-old-way" class="md-nav__link">
+    Extract scenes (deprecated old way)
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#convert-ffmpeg-framestxt-to-csv-deprecated" class="md-nav__link">
+    Convert ffmpeg frames.txt to CSV (deprecated)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#select-rows-from-csv-deprecated" class="md-nav__link">
+    Select rows from CSV (deprecated)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#merge-manual-marks-with-scenes-deprecated" class="md-nav__link">
+    Merge manual marks with scenes (deprecated)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extract-scenes-deprecated-old-way" class="md-nav__link">
+    Extract scenes (deprecated old way)
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Deprecated scripts and commands</h1>
+                
+                <p>While we are trying to optimise workflows, we cannot say goodbye to our first
+attempts just yet.
+Some of them are listed below.</p>
+<h2 id="convert-ffmpeg-framestxt-to-csv-deprecated">Convert ffmpeg frames.txt to CSV (deprecated)<a class="headerlink" href="#convert-ffmpeg-framestxt-to-csv-deprecated" title="Permanent link">&para;</a></h2>
+<p>This is no longer necessary, since ffmpeg is set to output in its "flat
+format".</p>
+<div class="codehilite"><pre><span></span><code>awk -f scripts/frames-to-csv.awk episodes/1/data_out/frames.txt &gt; episodes/1/data_manual/scenes.csv
+</code></pre></div>
+
+<h2 id="select-rows-from-csv-deprecated">Select rows from CSV (deprecated)<a class="headerlink" href="#select-rows-from-csv-deprecated" title="Permanent link">&para;</a></h2>
+<p>Using <a href="https://csvkit.readthedocs.io/en/latest/">csvkit</a>, I can find the rows that have been marked to contain the
+Star of David.
+This query works for small files, in which I manually aligned the manual
+timestamps with the scene times.</p>
+<div class="codehilite"><pre><span></span><code>csvsql --query <span class="s1">&#39;select * from scenes_david where david is not NULL&#39;</span> -v data_manual/scenes_david.csv
+</code></pre></div>
+
+<h2 id="merge-manual-marks-with-scenes-deprecated">Merge manual marks with scenes (deprecated)<a class="headerlink" href="#merge-manual-marks-with-scenes-deprecated" title="Permanent link">&para;</a></h2>
+<p>The manual marks indicate rough timestamps at which a Star of David is visible.
+I want to link these timestamps to detected scenes so that I can extract frames
+from the whole scene, to help provide training data.</p>
+<div class="codehilite"><pre><span></span><code><span class="nb">cd</span> episodes/<span class="nv">$EPISODE</span>
+csvsql --query <span class="s1">&#39;select s.*, m.* from scenes s, david1 m where s.start_ms &lt;= m.ms and s.end_ms &gt;= m.ms&#39;</span> <span class="se">\</span>
+    -v data_manual/scenes.csv data_manual/david1.csv &gt; data_manual/merged_marks.csv
+</code></pre></div>
+
+<p>There is an error in my assumption that I need only the scenes in which the
+<code>123000</code> millisecond falls. Instead I need all scenes that cover
+<code>[123000,124000)</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="nb">cd</span> episodes/<span class="nv">$EPISODE</span>
+csvsql --query <span class="s1">&#39;select s.*, m.s from scenes s, david2 m where (s.start_ms &lt;= m.ms and s.end_ms &gt;= m.ms) or (s.start_ms &lt;= m.ms + 999 and s.end_ms &gt;= m.ms + 999)&#39;</span> <span class="se">\</span>
+    -v data_manual/scenes.csv data_manual/david2.csv &gt; data_manual/merged_marks2.csv
+</code></pre></div>
+
+<p>In ELAN, I checked which of the adjourning scenes actually contain the symbol.
+I exported these annotations as TSV with too many columns (and no header, as
+ELAN doesn't do headers).
+Therefore I need to select the columns I need, in the correct order:</p>
+<div class="codehilite"><pre><span></span><code>csvcut -t -H -c <span class="m">12</span>,4,7 data_manual/2-annotations.tsv &gt; data_manual/adjusted_marks.csv
+</code></pre></div>
+
+<p>I then add a header to this file and create the script to extract scenes.</p>
+<h2 id="extract-scenes-deprecated-old-way">Extract scenes (deprecated old way)<a class="headerlink" href="#extract-scenes-deprecated-old-way" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="nb">cd</span> episodes/1/
+ffmpeg -report -ss 165927ms -to 167087ms -i data/video.webm -vsync <span class="m">2</span> data_out/scene-0066/frame-%03d.jpg
+</code></pre></div>
+
+<p>Create a script that extracts each scene as in the above command:
+(note that you have to set the video file name yourself)</p>
+<div class="codehilite"><pre><span></span><code><span class="nb">cd</span> episodes/<span class="nv">$EPISODE</span>
+awk -f ../../scripts/marks-to-sh.awk <span class="nv">video</span><span class="o">=</span>4QIcBbbPojc.mkv data_manual/merged_marks.csv &gt; extract.sh
+</code></pre></div>
+
+<p>Check for duplicate commands in <code>extract.sh</code>, as sometimes multiple manually
+identified timestamps may be in the same scene.
+The results would the same regardless, but it's wasted time.</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../extract-frames/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Extract frames from videos" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Extract frames from videos
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.8397ff9e.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.1e84347e.min.js"></script>
+      
+    
+  </body>
+</html>
