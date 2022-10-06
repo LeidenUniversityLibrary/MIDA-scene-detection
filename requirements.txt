@@ -1,0 +1,1 @@
+mkdocs-ubleiden-theme>=1.0
