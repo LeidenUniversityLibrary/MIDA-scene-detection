@@ -2,11 +2,13 @@ site_name: MIDA Video Pre-analysis Tools
 # site_url: 'https://lab.library.universiteitleiden.nl/'
 remote_branch: rendered
 theme:
-  name: material
-  font: false
+  name: ubleiden
+  # font: false
   # favicon: 'favicon.ico'
   language: en
   # custom_dir: leiden_theme
+  features:
+    - navigation.sections
 
 # extra_css:
   # - 'css/extra.css'
@@ -25,9 +27,10 @@ markdown_extensions:
   - footnotes
 
 nav:
-  - 'index.md'
-  - 'scene-detect.md'
-  - 'ocr.md'
-  - 'annotation.md'
-  - 'extract-frames.md'
+  - Overview: 'index.md'
+  - Pre-analysis steps:
+    - 'scene-detect.md'
+    - 'ocr.md'
+    - 'annotation.md'
+    - 'extract-frames.md'
   - deprecated.md
